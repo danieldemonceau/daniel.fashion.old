@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Footer from "./Footer";
+import Navbar from "./Navbar";
 
 const Layout = ({ children, title }: any) => {
   return (
@@ -12,8 +13,9 @@ const Layout = ({ children, title }: any) => {
           crossOrigin=""
         />
       </Head>
-      <div className="p-6 h-full from-black to-slate-700 bg-gradient-to-br">
-        <main className="h-full">{children}</main>
+      <div className="h-auto flex flex-col p-6 from-black to-slate-700 bg-gradient-to-br">
+        <Navbar />
+        <main className="m-auto">{children}</main>
         <Footer />
       </div>
     </>
