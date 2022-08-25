@@ -11,7 +11,7 @@ RUN yarn build
 
 FROM node:lts as runner
 WORKDIR /daniel.fashion
-ENV NODE_ENV production
+ENV NODE_ENV=production
 COPY --from=builder /daniel.fashion/next.config.js ./
 COPY --from=builder /daniel.fashion/public ./public
 COPY --from=builder /daniel.fashion/.next ./.next

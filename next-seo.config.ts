@@ -1,8 +1,7 @@
-import getConfig from "next/config";
+import meta from "./data/meta";
 
-const { publicRuntimeConfig } = getConfig();
-const author = publicRuntimeConfig.author;
-const domainName = publicRuntimeConfig.domainName;
+const author = meta.author;
+const domainName = meta.domainName;
 
 const config = {
   titleTemplate: `${domainName} | %s`,

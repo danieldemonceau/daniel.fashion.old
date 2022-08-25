@@ -1,12 +1,44 @@
 /** @type {import('next').NextConfig} */
-const author = "Daniel Demonceau";
 module.exports = {
   reactStrictMode: true,
   env: {},
   publicRuntimeConfig: {
     // Will be available on both server and client
-    author: author,
-    domainName: "daniel.fashion",
-    keywords: `${author}, Software Developer, Software Engineer, GIS Developer, GIS Engineer, Software Architect, Daniel Fashion`,
+  },
+  compress: true,
+  async rewrites() {
+    return [
+      {
+        source: "/*",
+        destination: "/",
+      },
+    ];
+  },
+  swcMinify: true,
+  experimental: {
+    reactRemoveProperties: true,
+    removeConsole: {
+      exclude: ["error"],
+    },
+  },
+  images: {
+    formats: ["image/jpeg"],
   },
 };
+
+const withBundleAnalyzer = require("@next/bundle-analyzer")({
+  enabled: process.env.ANALYZE === "true",
+});
+
+module.exports = withBundleAnalyzer({
+  // This is just your regular next.config.js options. For example:
+  images: {
+    domains: [
+      "images.pexels.com",
+      "i.ibb.co",
+      "avatars.githubusercontent.com",
+      "images.chesscomfiles.com",
+      "i.imgur.com",
+    ],
+  },
+});
