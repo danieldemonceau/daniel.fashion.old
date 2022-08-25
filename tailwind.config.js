@@ -1,9 +1,6 @@
 module.exports = {
   content: ["./pages/**/*.{html,tsx}", "./components/**/*.{html,tsx}"],
   darkmode: false,
-  theme: {
-    extend: {},
-  },
   plugins: [],
   theme: {
     screens: {
@@ -16,9 +13,17 @@ module.exports = {
       "2xl": "1536px",
       "3xl": "3440px",
     },
+    container: { center: true, padding: "2rem" },
     extend: {
       fontFamily: {
         sans: ["Catamaran", "sans-serif"],
+        testfont: ["Fascinate", "sans"],
+      },
+      backgroundImage: {
+        hero: "url('/images/BackgroundImage.jpg')",
+      },
+      height: {
+        "85vh": "85vh",
       },
     },
   },
