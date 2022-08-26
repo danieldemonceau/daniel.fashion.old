@@ -19,9 +19,6 @@ module.exports = {
         sans: ["Catamaran", "sans-serif"],
         testfont: ["Fascinate", "sans"],
       },
-      backgroundImage: {
-        hero: "url('/images/BackgroundImage.jpg')",
-      },
       height: {
         "85vh": "85vh",
       },
