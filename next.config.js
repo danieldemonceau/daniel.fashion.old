@@ -20,6 +20,9 @@ module.exports = {
     removeConsole: {
       exclude: ["error"],
     },
+    images: {
+      allowFutureImage: true,
+    },
   },
   images: {
     formats: ["image/jpeg"],

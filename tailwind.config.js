@@ -1,5 +1,5 @@
 module.exports = {
-  content: ["./pages/**/*.{html,tsx}", "./components/**/*.{html,tsx}"],
+  content: ["./src/pages/**/*.{html,tsx}", "./src/components/**/*.{html,tsx}"],
   darkmode: false,
   plugins: [],
   theme: {
@@ -17,10 +17,13 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ["Catamaran", "sans-serif"],
-        testfont: ["Fascinate", "sans"],
+        anima: ["Anima", "sans"],
+        roboto: ["Roboto", "sans-serif"],
       },
       height: {
+        "80vh": "80vh",
         "85vh": "85vh",
+        "90vh": "90vh",
       },
     },
   },
