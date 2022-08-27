@@ -1,45 +1,72 @@
 import Link from "next/link";
 import HorizontalBar from "./HorizontalBar";
-import { CSSTransition, Transition } from "react-transition-group";
+import { CSSTransition } from "react-transition-group";
 import { useEffect, useState } from "react";
 
 const Nav = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [scrollYValue, setScrollYValue] = useState(0);
   const [show, setShow] = useState(false);
 
   const scrollFunction = () => {
-    if (isScrolled && window.scrollY < 80) {
-      setIsScrolled(false);
-    } else if (!isScrolled && window.scrollY > 120) {
-      setIsScrolled(true);
-    }
+    console.log(window.scrollY);
+    setScrollYValue(() => window.scrollY);
   };
 
   useEffect(() => {
     window.addEventListener("scroll", scrollFunction);
-    console.log("window.scrollY", window.scrollY);
   });
 
   useEffect(() => {
     setTimeout(async () => {
       setShow(true);
-    }, 2000);
+    }, 1);
   }, []);
 
   return (
     <>
-      {show && (
-        <CSSTransition
-          in={true}
-          appear={true}
-          enter={true}
-          exit={true}
-          timeout={1000}
-          classNames="qwert"
-          unmountOnExit
-        >
-          <nav className={`text-black bg-white pt-4 pb-2`}>
-            <div className={`text-black bg-white`}>
+      <nav
+        className={`left-0 right-0 fixed z-10 ${
+          scrollYValue > 300
+            ? "bg-white/100"
+            : // : scrollYValue > 250
+            // ? 90
+            // : scrollYValue > 200
+            // ? 70
+            scrollYValue > 150
+            ? "bg-white/50"
+            : // : scrollYValue > 100
+              // ? 30
+              // : scrollYValue > 50
+              // ? 10
+              // scrollYValue > 0
+              // ?
+              "bg-white/0"
+          // : "bg-white/0"
+        }
+         text-black pt-2 pb-1`}
+      >
+        {show && (
+          <CSSTransition
+            in={true}
+            appear={true}
+            enter={true}
+            exit={true}
+            timeout={1000}
+            classNames="navbar"
+            unmountOnExit
+          >
+            <div className={`text-black`}>
+              <h1
+                className={`text-center font-anima tracking-widest -mb-2 ${
+                  scrollYValue > 300
+                    ? "opacity-100"
+                    : scrollYValue > 150
+                    ? "opacity-50"
+                    : "opacity-0"
+                }`}
+              >
+                DANIEL DEMONCEAU
+              </h1>
               <HorizontalBar />
               <div className="flex justify-center items-center">
                 <nav className="text-slate-800 h-auto ">
@@ -74,9 +101,9 @@ const Nav = () => {
               </div>
               <HorizontalBar />
             </div>
-          </nav>
-        </CSSTransition>
-      )}
+          </CSSTransition>
+        )}
+      </nav>
     </>
   );
 };
